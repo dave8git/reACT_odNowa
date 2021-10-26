@@ -7,10 +7,6 @@ import MenuButton from '../MenuButton/MenuButton';
 class App extends React.Component {
   
   render() {
-    console.log(state);
-    state = {
-      list: this.props.list || [],
-    }
     return (
       <main className={styles.component}>
         <MenuButton />
