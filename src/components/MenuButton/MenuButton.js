@@ -14,10 +14,8 @@ class MenuButton extends React.Component {
             visible: !(this.state.visible), 
         }); 
     }
-  render() {
-    
+  render() { 
     return (
-        
     <div>
         <button onClick={() => this.handleClick()}>
           <p>MenuButton</p>
@@ -26,15 +24,12 @@ class MenuButton extends React.Component {
 
           //this.state.columns.map((n) => {<ul>n</ul>})
 
-           [...listData][columns].map((n) => <ul>{n}</ul>)
+           listData.columns.map((col) => <ul>{col.title} <li>{col.cards.title}</li></ul>)
 
          : null
-
         }
         {/* <p>{this.state.visible ? 'I\'m visible' : 'false'}</p> */}
-        
         </div>
-    
     )
   }
 }
