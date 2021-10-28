@@ -13,13 +13,13 @@ class App extends React.Component {
     addList(title){
       this.setState(state => (
           {
-              columns: [
-                  ...state.columns,
+              lists: [
+                  ...state.lists,
                   {
                       key: state.lists.length ? state.lists[state.lists.length-1].key+1 : 0,
                       title, 
                       icon: 'list-alt',
-                      cards: []
+                      columns: []
                   }
               ]
           }
