@@ -19,7 +19,8 @@ class App extends React.Component {
                       key: state.lists.length ? state.lists[state.lists.length-1].key+1 : 0,
                       title, 
                       icon: 'list-alt',
-                      columns: []
+                      columns: [],
+                      image: 'https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
                   }
               ]
           }
