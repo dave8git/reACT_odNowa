@@ -39,7 +39,7 @@ class App extends React.Component {
           }
           </div>
         <div className={styles.creator}>
-            <Creator text={settings.columnCreatorText} action={title => this.addList(title)} />
+            <Creator text={settings.listCreatorText} action={title => this.addList(title)} />
         </div>
         {/* <List title={['Things to do', <sup key='1'>soon!</sup>]} src={'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png'}>
           <p>I'm planning on doing all these things sooner, rathern tahn later!</p>
