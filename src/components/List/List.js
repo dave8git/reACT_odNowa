@@ -6,6 +6,7 @@ import Column from '../Column/Column';
 import {settings} from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator';
+
 class List extends React.Component {
   state = {
     columns: this.props.columns || [],
@@ -13,47 +14,49 @@ class List extends React.Component {
   static propTypes = {
     description: PropTypes.node, 
     columns: PropTypes.array, 
+    title: PropTypes.string,
+    image: PropTypes.string,
   }
   static defaultProps = {
     description: settings.defaultListDescription, 
   }
   addColumn(title){
     this.setState(state => (
-        {
-            columns: [
-                ...state.columns,
-                {
-                    key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
-                    title, 
-                    icon: 'list-alt',
-                    cards: []
-                }
-            ]
-        }
+      {
+        columns: [
+          ...state.columns,
+          {
+            key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
+            title, 
+            icon: 'list-alt',
+            cards: [],
+          },
+        ],
+      }
     ));
   }   
   render() {
     console.log('this.props', this.props.image);
     return (
       <section className={styles.component}>
-          <Hero titleText={this.props.title} image={this.props.image} />
-          <div className={styles.description}>
-            {ReactHtmlParser(this.props.description)}
-          </div>
-          <div className={styles.columns}>
-            {this.state.columns.map(({key, ...columnProps}) => (
-              <Column key={key} {...columnProps} />
-            ))
+        <Hero titleText={this.props.title} image={this.props.image} />
+        <div className={styles.description}>
+          {ReactHtmlParser(this.props.description)}
+        </div>
+        <div className={styles.columns}>
+          {this.state.columns.map(({key, ...columnProps}) => (
+            <Column key={key} {...columnProps} />
+          ))
             
             /* <Column title={'Animals'} />
             <Column title={'Plants'} />
             <Column title={'Minerals'} /> */}
-          </div>
-          <div className={styles.creator}>
-              <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)} />
-          </div>
+        </div>
+        <div className={styles.creator}>
+          <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)} />
+        </div>
       </section>
-    )
+    );
   }
 }
 
