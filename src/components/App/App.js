@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './App.scss';
-import List from '../List/List.js';
-import {listData} from '../../data/dataStore';
+import List from '../List/ListContainer.js';
+//import {listData} from '../../data/dataStore';
 import MenuButton from '../MenuButton/MenuButton';
 import Creator from '../Creator/Creator';
-import {settings} from '../../data/dataStore';
+import {listData, settings} from '../../data/dataStore';
 import PropTypes from 'prop-types';
 
 class App extends React.Component {
@@ -27,18 +27,23 @@ class App extends React.Component {
         }
       ));
     } 
+    static propTypes = {
+      title: PropTypes.node,
+      subtitle: PropTypes.node,
+      lists: PropTypes.array,
+    }
     render() {
+      const {lists, title, subtitle} = this.props;
       return (
         <main className={styles.component}>
-          <MenuButton />
-          <h1 className={styles.title}>My first React app</h1>
-          <h2 className={styles.subtitle}>Hello world!</h2>
-          <List {...listData} />
+          {/* <MenuButton /> */}
+          <h1 className={styles.title}>{title}</h1>
+          <h2 className={styles.subtitle}>{subtitle}</h2>
+          {/*<List {...listData} />*/}
           <div className={styles.columns}>
-            {this.state.lists.map(({key, ...listProps}) => (
-              <List key={key} {...listProps} />
-            ))
-            }
+            {lists.map(listData => (
+              <List key={listData.id} {...listData} />
+            ))}
           </div>
           <div className={styles.creator}>
             <Creator text={settings.listCreatorText} action={title => this.addList(title)} />
@@ -53,6 +58,8 @@ class App extends React.Component {
 
 App.propTypes = {
   lists: PropTypes.array,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 export default App;
