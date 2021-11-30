@@ -16,6 +16,7 @@ class List extends React.Component {
     columns: PropTypes.array, 
     title: PropTypes.string,
     image: PropTypes.string,
+    addColumn: PropTypes.func,
   }
   static defaultProps = {
     description: settings.defaultListDescription, 
@@ -36,7 +37,7 @@ class List extends React.Component {
   //   ));
   // }   
   render() {
-    const { title, image, description, columns } = this.props;
+    const { title, image, description, columns, addColumn } = this.props;
     console.log('this.props', this.props.image);
     return (
       <section className={styles.component}>
@@ -55,7 +56,7 @@ class List extends React.Component {
           */}
         </div> 
         <div className={styles.creator}>
-          <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)} />
+          <Creator text={settings.columnCreatorText} action={addColumn} />
         </div> 
       </section>
     );

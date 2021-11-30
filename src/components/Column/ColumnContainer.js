@@ -1,13 +1,15 @@
 import {connect} from 'react-redux';
 import Column from './Column';
-import { createActionAddColumn } from '../../redux/columnsRedux.js';
+import { createActionAddCard, getCardsForColumns } from '../../redux/cardsRedux.js';
 
-export const getCardsForColumn = ({cards}, columnId) => cards.filter(card => card.columnId == columnId);
 const mapStateToProps = (state, props) => ({
-  cards: getCardsForColumn(state, props.id),
+  cards: getCardsForColumns(state, props.id),
 });
 
-const mapDispatchToProps = (dispatch, {columnId}) => ({
-  addCard: title => dispatch(createActionAddColumn({title, columnId})),  //title to samo co title: title
+const mapDispatchToProps = (dispatch, props) => ({ // Czy funkcja mapDispatchToProps to jakaś standardowa funkcja Reduxa?  
+  addCard: title => dispatch(createActionAddCard({  // Co ta funkcja (createActionAddColumn robi?)
+    columnId: props.id,
+    title,
+  })),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Column);
