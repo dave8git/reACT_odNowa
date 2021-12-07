@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.scss';
 import List from '../List/ListContainer.js';
+import Search from '../Search/SearchContainer.js';
 //import {listData} from '../../data/dataStore';
 import MenuButton from '../MenuButton/MenuButton';
 import Creator from '../Creator/Creator';
@@ -39,6 +40,7 @@ class App extends React.Component {
           {/* <MenuButton /> */}
           <h1 className={styles.title}>{title}</h1>
           <h2 className={styles.subtitle}>{subtitle}</h2>
+          <Search />
           {/*<List {...listData} />*/}
           <div className={styles.columns}>
             {lists.map(listData => (
