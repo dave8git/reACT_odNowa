@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchResult = props => {
+const SearchResults = props => {
+  const {searchString} = props;
   return (
     <section>
-      <h3>Tutaj będą rezultaty</h3>
+      <h3>{searchString}</h3>
     </section>
   );
 };
  
+SearchResults.propTypes = {
+  searchString: PropTypes.string,
+}; 
 
-
-export default SearchResult;
+export default SearchResults;
