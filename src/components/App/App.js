@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './App.scss';
 import List from '../List/ListContainer.js';
 import Search from '../Search/SearchContainer.js';
+import SearchResults from '../SearchResults/SearchResultsContainer';
 //import {listData} from '../../data/dataStore';
 import MenuButton from '../MenuButton/MenuButton';
 import Creator from '../Creator/Creator';
@@ -34,27 +35,36 @@ class App extends React.Component {
       lists: PropTypes.array,
     }
     render() {
-      const {lists, title, subtitle} = this.props;
-      return (
-        <main className={styles.component}>
-          {/* <MenuButton /> */}
-          <h1 className={styles.title}>{title}</h1>
-          <h2 className={styles.subtitle}>{subtitle}</h2>
-          <Search />
-          {/*<List {...listData} />*/}
-          <div className={styles.columns}>
-            {lists.map(listData => (
-              <List key={listData.id} {...listData} />
-            ))}
-          </div>
-          <div className={styles.creator}>
-            <Creator text={settings.listCreatorText} action={title => this.addList(title)} />
-          </div>
-          {/* <List title={['Things to do', <sup key='1'>soon!</sup>]} src={'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png'}>
-          <p>I'm planning on doing all these things sooner, rathern tahn later!</p>
-        </List> */}
-        </main>
-      );
+      const {lists, title, subtitle, searchString} = this.props;
+      if (searchString == '') {
+        return (
+          <main className={styles.component}>
+            {/* <MenuButton /> */}
+            <h1 className={styles.title}>{title}</h1>
+            <h2 className={styles.subtitle}>{subtitle}</h2>
+            <Search />
+            {/*<List {...listData} />*/}
+            <div className={styles.columns}>
+              {lists.map(listData => (
+                <List key={listData.id} {...listData} />
+              ))}
+            </div>
+            <div className={styles.creator}>
+              <Creator text={settings.listCreatorText} action={title => this.addList(title)} />
+            </div>
+            {/* <List title={['Things to do', <sup key='1'>soon!</sup>]} src={'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png'}>
+            <p>I'm planning on doing all these things sooner, rathern tahn later!</p>
+          </List> */}
+          </main>
+        );
+      } else {
+        return (
+          <SearchResults />
+        );
+      }
+      
+      
+      
     }
 }
 
