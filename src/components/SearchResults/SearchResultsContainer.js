@@ -5,7 +5,7 @@ import SearchResults from './SearchResults';
 
 const mapStateToProps = state => ({
   searchString: state.searchString,
-  cards: getCardsBySearchString(state.searchString),
+  cards: getCardsBySearchString(state),
 });
 
 export default connect(mapStateToProps)(SearchResults);
