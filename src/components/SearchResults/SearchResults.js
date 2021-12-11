@@ -19,5 +19,5 @@ SearchResults.propTypes = {
   searchString: PropTypes.string,
   cards: PropTypes.array,
 }; 
-
+//
 export default SearchResults;
