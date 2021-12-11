@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
+import Column from '../Column/Column'; 
 
 const SearchResults = props => {
   const {searchString, cards} = props;
@@ -8,9 +9,11 @@ const SearchResults = props => {
   return (
     <section>
       <h3>{searchString}</h3>
-      {cards.map(cardData => (
+      <Column cards={cards} />
+
+      {/* {cards.map(cardData => (
         <Card key={cardData.id} {...cardData} />
-      ))}
+      ))} */}
     </section>
   );
 };
