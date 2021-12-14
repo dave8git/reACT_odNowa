@@ -6,19 +6,24 @@ import Column from '../Column/Column';
 const SearchResults = props => {
   const {searchString, cards, title, icon} = props;
   console.log('cards', cards);
+  console.log('title', title);
   return (
     <section>
+
       <h3>{searchString}</h3>
+      {/* PRZYKŁAD UZYCIA WARUNKU W KODZIE REACT (poniżej): */}
+      {/* {
+        (cards.length) ? (<p>
+          <Column cards={cards} title={title} icon={icon}>{title}</Column>
+        </p>) : (<span>
+            brak takiej karty
+        </span>)
+      } */}
+      
 
-      if(cards) {
-        <Column cards={cards} title={title} icon={icon} />
-      } else {
-        'brak takiej karty'
-      };
-
-      {/* {cards.map(cardData => (
+      {cards.map(cardData => (
         <Card key={cardData.id} {...cardData} />
-      ))} */}
+      ))}
     </section>
   );
 };

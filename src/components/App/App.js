@@ -59,7 +59,7 @@ class App extends React.Component {
         );
       } else {
         return (
-          <SearchResults />
+          <SearchResults title={title} />
         );
       }
       
