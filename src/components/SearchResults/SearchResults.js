@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 import Column from '../Column/Column'; 
+import styles from '../SearchResults/SearchResults';
 
 const SearchResults = props => {
   const {searchString, cards, title, icon} = props;
@@ -20,10 +21,11 @@ const SearchResults = props => {
         </span>)
       } */}
       
-
-      {cards.map(cardData => (
-        <Card key={cardData.id} {...cardData} />
-      ))}
+      <div className={styles.text}>
+        {cards.map(cardData => (
+          <Card key={cardData.id} {...cardData} />
+        ))}
+      </div>
     </section>
   );
 };
