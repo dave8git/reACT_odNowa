@@ -1,8 +1,19 @@
 import shortid from 'shortid';
-
+import { getAllCardsForColumn } from './cardsRedux.js';
 // selectors 
 export const getColumnsForList = ({columns},listId) => columns.filter(column => column.listId == listId);
 
+export const getColumnsWithCards = state => { //selektor który zbiera kolumny i dodaje do nich tablicę kart
+  const columns = state.columns;
+  console.log('columns in getColumnsWithCards before change, only columns', columns);
+  columns.forEach(column => {
+    const allCards = getAllCardsForColumn(state, column.id);
+    console.log('allCards', allCards); 
+    column.cards = allCards;
+  });
+  console.log('columns in getColumnsWithCards after change, columns and cards', columns);
+  return columns;
+};
 // action name creator 
 const reducerName = 'columns';
 

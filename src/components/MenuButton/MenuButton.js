@@ -28,7 +28,7 @@ class MenuButton extends React.Component {
 
           //this.state.columns.map((n) => {<ul>n</ul>})
 
-            props.columns.map((col) => <ul key={col.id}>{col.title} {/*{col.cards.map((card) => <li key={card.id}>{card.title}</li>)}*/}</ul>)
+            props.columns.map((col) => <ul key={col.id}>{col.title} {col.cards.map((card) => <li key={card.id}>{card.title}</li>)}</ul>)
 
             : null
           }
