@@ -4,7 +4,7 @@ import List from '../List/ListContainer.js';
 import Search from '../Search/SearchContainer.js';
 import SearchResults from '../SearchResults/SearchResultsContainer';
 //import {listData} from '../../data/dataStore';
-import MenuButton from '../MenuButton/MenuButton';
+import MenuButton from '../MenuButton/MenuButtonContainer';
 import Creator from '../Creator/Creator';
 import {listData, settings} from '../../data/dataStore';
 import PropTypes from 'prop-types';
@@ -39,7 +39,7 @@ class App extends React.Component {
       if (searchString == '') {
         return (
           <main className={styles.component}>
-            {/* <MenuButton /> */}
+            <MenuButton />
             <h1 className={styles.title}>{title}</h1>
             <h2 className={styles.subtitle}>{subtitle}</h2>
             <Search />

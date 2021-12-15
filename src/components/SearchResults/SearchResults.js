@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from '../Card/Card';
+import Card from '../Card/CardContainer';
 import Column from '../Column/Column'; 
-import styles from '../SearchResults/SearchResults';
+import styles from '../SearchResults/SearchResults.scss';
 
 const SearchResults = props => {
   const {searchString, cards, title, icon} = props;

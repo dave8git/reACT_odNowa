@@ -17,6 +17,8 @@ class MenuButton extends React.Component {
       }); 
     }
     render() { 
+      console.log('this.props.columns', this.props.columns);
+      const { props } = this;
       return (
         <div>
           <button onClick={() => this.handleClick()}>
@@ -26,7 +28,7 @@ class MenuButton extends React.Component {
 
           //this.state.columns.map((n) => {<ul>n</ul>})
 
-            listData.columns.map((col) => <ul key={col.id}>{col.title} {col.cards.map((card) => <li key={card.id}>{card.title}</li>)}</ul>)
+            props.columns.map((col) => <ul key={col.id}>{col.title} {/*{col.cards.map((card) => <li key={card.id}>{card.title}</li>)}*/}</ul>)
 
             : null
           }

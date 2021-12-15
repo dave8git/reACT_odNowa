@@ -3,11 +3,17 @@ import styles from './Card.scss';
 import PropTypes from 'prop-types';
 
 const Card = props => {
-  const {title, icon} = props;
+  const {title, icon, column} = props;
+  console.log('column', column);
   return (
     <section className={styles.component}>
       {title}
-      {icon}
+      {
+        (column) ? (<p>
+          From column {column.title}
+        </p>) : (null)
+      }
+
     </section>
   );
 };
@@ -15,6 +21,7 @@ const Card = props => {
 Card.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
+  column: PropTypes.object,
 };
 
 export default Card;
