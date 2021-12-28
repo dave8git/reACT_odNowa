@@ -4,16 +4,15 @@ import { getAllCardsForColumn } from './cardsRedux.js';
 export const getColumnsForList = ({columns},listId) => columns.filter(column => column.listId == listId);
 
 export const getColumnsWithCards = state => { //selektor który zbiera kolumny i dodaje do nich tablicę kart
-  const columns = state.columns;
+  const { columns } = state;
   console.log('columns in getColumnsWithCards before change, only columns', columns);
-  columns.forEach(column => {
-    const allCards = getAllCardsForColumn(state, column.id);
-    console.log('allCards', allCards); 
-    column.cards = allCards;
+  const modified = columns.map(column => {
+    const cards = getAllCardsForColumn(state, column.id);
+    return { ...column, cards };
   });
-  console.log('columns in getColumnsWithCards after change, columns and cards', columns);
-  return columns;
+  return modified;
 };
+
 // action name creator 
 const reducerName = 'columns';
 

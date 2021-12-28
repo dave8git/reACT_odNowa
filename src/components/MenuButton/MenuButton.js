@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class MenuButton extends React.Component {
     static propTypes = {
-      columns: PropTypes.columns,
+      columns: PropTypes.array,
     }
     state = {
       visible: false, 

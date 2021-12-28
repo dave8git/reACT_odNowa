@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import { createAction_moveCard } from '../../redux/cardsRedux';
 import App from './App';
 
 const mapStateToProps = state => ({
@@ -8,4 +9,7 @@ const mapStateToProps = state => ({
   searchString: state.searchString,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  moveCard: payload => dispatch(createAction_moveCard(payload)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);

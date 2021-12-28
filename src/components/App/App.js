@@ -8,6 +8,7 @@ import MenuButton from '../MenuButton/MenuButtonContainer';
 import Creator from '../Creator/Creator';
 import {listData, settings} from '../../data/dataStore';
 import PropTypes from 'prop-types';
+import { DragDropContext } from 'react-beautiful-dnd'; 
 
 class App extends React.Component {
     state = {
@@ -33,10 +34,35 @@ class App extends React.Component {
       title: PropTypes.node,
       subtitle: PropTypes.node,
       lists: PropTypes.array,
+      moveCard: PropTypes.func, 
     }
     render() {
-      const {lists, title, subtitle, searchString} = this.props;
+      const {lists, title, subtitle, searchString, moveCard} = this.props;
       if (searchString == '') {
+        const moveCardHandler = result => {
+          console.log(result);
+          if(
+            result.destination
+            &&
+              (
+                result.destination.index != result.source.index
+                ||
+                result.destination.droppableId != result.source.droppableId
+              )
+          ){
+            moveCard({
+              id: result.draggableId,
+              dest: {
+                index: result.destination.index,
+                columnId: result.destination.droppableId,
+              },
+              src: {
+                index: result.source.index,
+                columnId: result.source.droppableId,
+              },
+            });
+          }
+        };
         return (
           <main className={styles.component}>
             <MenuButton />
@@ -45,9 +71,12 @@ class App extends React.Component {
             <Search />
             {/*<List {...listData} />*/}
             <div className={styles.columns}>
-              {lists.map(listData => (
-                <List key={listData.id} {...listData} />
-              ))}
+              <DragDropContext onDragEnd={moveCardHandler}>
+                {lists.map(listData => (
+                  <List key={listData.id} {...listData} />
+                ))}
+              </DragDropContext>
+              
             </div>
             <div className={styles.creator}>
               <Creator text={settings.listCreatorText} action={title => this.addList(title)} />
