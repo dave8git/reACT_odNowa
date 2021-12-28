@@ -35,7 +35,7 @@ export default function reducer(statePart = [], action = {}) {
     case MOVE_CARD: {
       const {id, src, dest} = action.payload; 
       const targetCard = statePart.find(card => card.id == id); //można zrobić tak jak w treści [0] ale find zwraca jeden wynik i tak jest zgodnie ze sztuką, 
-      const targetColumnCards = statePart.filter(card => card.columnId == dest.columnId);
+      const targetColumnCards = statePart.filter(card => card.columnId == dest.columnId).sort((a, b) => a.index - b.index);
       console.log(targetColumnCards.map(card => `${card.index}, title: ${card.title}`));
       if(dest.columnId == src.columnId){
         targetColumnCards.splice(src.index, 1);
